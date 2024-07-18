@@ -1,6 +1,6 @@
 ---
 title: pwntools로 gdb 연결하기
-date: YYYY-MM-DD HH:MM:SS +/-TTTT
+date: 2024-06-15 00:00:00 +0900
 categories: [Pwnable]
 tags: [pwnable, pwntools, gdb]
 ---
