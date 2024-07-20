@@ -1,8 +1,8 @@
 ---
-title: uaf
+title: DEFCON 31 LiveCTF - shop
 date: 2024-07-16 00:00:00 +0900
-categories: [Pwnable, Wargame]
-tags: [pwnable, wargame, uaf]
+categories: [Pwnable, CTF]
+tags: [pwnable, ctf, uaf]
 ---
 ## 0x00. Introduction
 
