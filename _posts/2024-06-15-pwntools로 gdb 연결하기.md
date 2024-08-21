@@ -56,30 +56,27 @@ context.terminal = ['tmux', 'splitw', '-vf']    # 전체 창을 가로로 분리
 ``` python
 from pwn import *
 from pwnlib.util.packing import p32, p64, u32, u64
-import sys
+from time import sleep
+from argparse import ArgumentParser
 
-DEBUG = True
-BINARY = "./challenge"
-LIBRARY = "./libc.so.6"
-
+BINARY = ""
+LIBRARY = ""
 bp = {
     'main' : 0x555555555249,
-    'end_of_main' : 0x5555555552d3,
-    'foo' : 0x55555555566f,
 }
 
 gs = f'''
-b *{bp['main']}
+b *{bp["main"]}
 continue
 '''
 context.terminal = ['tmux', 'splitw', '-hf']
 
-def main():
-    if(len(sys.argv) > 1):
-        s = remote("server", int(sys.argv[1]))
+def main(port, debug):
+    if(port):
+        s = remote("0.0.0.0", port)
     else:
         s = process(BINARY, env={"LD_PRELOAD" : LIBRARY})
-        if DEBUG:
+        if debug:
             gdb.attach(s, gs)
     elf = ELF(BINARY)
     lib = ELF(LIBRARY)
@@ -87,15 +84,25 @@ def main():
     s.interactive()
 
 if __name__=='__main__':
-    main()
+    parser = ArgumentParser()
+    parser.add_argument('-p', '--port', type=int)
+    parser.add_argument('-d', '--debug', type=int, default=1)
+    args = parser.parse_args()
+    main(args.port, args.debug)
 ```
 
-`main()`을 보면 `exploit.py` 뒤에 인자가 있으면 `remote`를 이용해서 실행하고, 없으면 로컬에서 디버깅을 하게끔 구성했다.
-
-이 인자는 `remote` 함수에 port 번호를 의미하는 인자로 들어가게 되므로, 실제 서버에 payload를 날릴 때는 다음과 같이 사용하면 된다.
+`main`에 두 개의 인자가 전달되는데, 먼저 `-p` 혹은 `--port` 인자가 있으면 `remote`를 이용해서 실행하고, 없으면 로컬에서 디버깅을 하게끔 구성했다.
 
 ``` bash
-➜  python3 exploit.py 7777
+➜  python3 exploit.py -p 7777
+➜  python3 exploit.py --port 7777
+```
+
+그리고 디버깅이 더 이상 필요 없을 경우 `-d` 혹은 `--debug` 인자에 0을 전달해주면 디버깅 없이 실행하게 된다.
+
+``` bash
+➜  python3 exploit.py -d 0
+➜  python3 exploit.py --debug 0
 ```
 
 참고로, `from pwn import *`을 해놓고 두 번째 줄에서 굳이 또 packing 함수들을 import 하는 이유는 vscode에서 이상하게 packing 함수들을 못찾아서 underline이 생기기 때문에 단순히 보기 좋으라고 추가한 것이다.
