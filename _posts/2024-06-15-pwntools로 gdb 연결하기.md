@@ -61,8 +61,10 @@ from argparse import ArgumentParser
 
 BINARY = ""
 LIBRARY = ""
+CONTAINER = ""
+code_base = 0x555555554000
 bp = {
-    'main' : 0x555555555249,
+    'main' : code_base + 0x16ae,
 }
 
 gs = f'''
@@ -71,9 +73,12 @@ continue
 '''
 context.terminal = ['tmux', 'splitw', '-hf']
 
-def main(port, debug):
+def main(server, port, debug):
     if(port):
-        s = remote("0.0.0.0", port)
+        s = remote(server, port)
+        if debug:
+            pid = os.popen(f"sudo docker top {CONTAINER} -eo pid,comm | grep {BINARY} | awk '{{print $1}}'").read()
+            gdb.attach(int(pid), gs, exe=BINARY)
     else:
         s = process(BINARY, env={"LD_PRELOAD" : LIBRARY})
         if debug:
@@ -85,13 +90,14 @@ def main(port, debug):
 
 if __name__=='__main__':
     parser = ArgumentParser()
+    parser.add_argument('-s', '--server', type=str, default="0.0.0.0")
     parser.add_argument('-p', '--port', type=int)
     parser.add_argument('-d', '--debug', type=int, default=1)
     args = parser.parse_args()
-    main(args.port, args.debug)
+    main(args.server, args.port, args.debug)
 ```
 
-`main`에 두 개의 인자가 전달되는데, 먼저 `-p` 혹은 `--port` 인자가 있으면 `remote`를 이용해서 실행하고, 없으면 로컬에서 디버깅을 하게끔 구성했다.
+`main`에 세 개의 인자가 전달되는데, 먼저 `-p` 혹은 `--port` 인자가 있으면 `remote`를 이용해서 실행하고, 없으면 로컬에서 디버깅을 하게끔 구성했다.
 
 ``` bash
 ➜  python3 exploit.py -p 7777
@@ -103,6 +109,13 @@ if __name__=='__main__':
 ``` bash
 ➜  python3 exploit.py -d 0
 ➜  python3 exploit.py --debug 0
+```
+
+마지막으로 실제 서버에 payload를 전송하기 위해서는 `-s` 혹은 `--server` 인자에 서버 도메인이나 IP를 전달해주면 되는데, 이 때 디버깅은 꺼주는게 좋다.
+
+``` bash
+➜  python3 exploit.py -s server.com -d 0
+➜  python3 exploit.py --server x.x.x.x --debug 0
 ```
 
 참고로, `from pwn import *`을 해놓고 두 번째 줄에서 굳이 또 packing 함수들을 import 하는 이유는 vscode에서 이상하게 packing 함수들을 못찾아서 underline이 생기기 때문에 단순히 보기 좋으라고 추가한 것이다.

@@ -226,7 +226,23 @@ def brute_force_time(port):
 실질적으로는 information leak을 수행한 후에 race condition을 트리거하므로 같은 상황을 만들어주기 위해 information leak을 위한 payload도 중간에 작성해야 정확한 time을 구할 수 있다.
 
 트리거 성공 시 `food_count`가 -1이 되고 이 때 `insert`를 하면 `food[-1]`에 데이터를 쓸 수 있게된다.
-
+```
+food[-1]     :  0x00007ffff7da5510 -> name[0x40]
+                0x00007ffff7da5520
+                0x00007ffff7da5530
+                0x00007ffff7da5540
+food_count   :  0x00007ffff7da5550 -> cook_time[0x8], left_time[0x8]
+food[0]      :  0x00007ffff7da5560 -> name[0x40]
+                0x00007ffff7da5570
+                0x00007ffff7da5580
+                0x00007ffff7da5590
+                0x00007ffff7da55a0 -> cook_time[0x8], left_time[0x8]
+                0x00007ffff7da55b0
+                ...
+TLS          :  0x00007ffff7da56c0
+                ...
+LIBC         :  0x00007ffff7da9000
+```
 이 때 입력하는 `cook_time`이 `food_count` 위치에 쓰여지기 때문에 `cook_time`을 60으로 입력하면 `food_count`가 60인 것으로 인식되어 `food`를 60개 출력해준다.
 
 따라서 트리거 성공 여부를 출력되는 `food`의 개수로 판단하게끔 payload를 작성했다.

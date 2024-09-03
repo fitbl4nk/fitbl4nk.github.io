@@ -1,5 +1,5 @@
 ---
-title: SECCOMP 정리
+title: "[SECCOMP] prctl를 이용한 SECCOMP 정리"
 date: 2024-05-31 00:00:00 +0900
 categories: [Linux, Study]
 tags: [linux, study, seccomp, mitigation]
