@@ -1,5 +1,5 @@
 ---
-title: Codegate 2019 Quals - cg_casino
+title: Codegate 2019 CTF Quals - cg_casino
 date: 2024-08-01 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, bof, /proc/self/environ, ld_preload, envp]
@@ -31,7 +31,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$
 세 개의 카지노 게임과 `put voucher`와 `merge voucher` 기능이 구현되어있다.
 
 ## 0x01. Vulnerability
-### Stack Overflow
+### Stack overflow
 ``` c
 void __fastcall __noreturn main(int a1, char **a2, char **a3)
 {
@@ -113,7 +113,7 @@ a a a a a a
 2522534248 : out of range
 ```
 
-### File Copy
+### File copy
 사실 취약점이라기보다는 바이너리에 주어진 기능인데, `merge voucher`에서 다음 함수가 호출된다.
 ``` c
 unsigned __int64 __fastcall xstat_unlink_400F09(const char *new, char *old)
@@ -151,7 +151,7 @@ unsigned __int64 __fastcall xstat_unlink_400F09(const char *new, char *old)
 - ../../../../../../././etc/passwd
 
 ## 0x02. Exploit
-### File Drop
+### File drop
 취약점은 이게 끝인데, 문제는 파일을 서버에 올릴 방법이 없다.
 
 어떻게든 파일을 서버에 올린 다음 `merge voucher` 기능을 이용해서 파일을 `/home/cg_casino/voucher/` 경로로 옮긴 후 다음 단계로 넘어가야할 것 같은데...
@@ -178,7 +178,7 @@ BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 ```
 따라서 이런 식으로 stack의 값을 조작해서 `/proc/self/environ`에 파일의 형태로 남길 수 있다.
 
-### Stack Overflow & File Copy
+### Stack overflow & File copy
 `/proc/self/environ`에 libc 데이터를 쓰고 그것을 `/home/cg_casino/voucher`로 가져오기 위한 조건은 총 3개이다.
 - main의 new가 `/home/cg_casino/voucher`에 저장할 파일명일 것
 - main의 old가 길이가 32이고 `/proc/self/environ` 파일을 가리킬 것
@@ -204,7 +204,7 @@ BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 ```
 따라서 위 payload를 추가해주어야 한다.
 
-### Small Libc
+### Small libc
 여기에서 문제가 하나 더 있는데 환경변수 영역도 한도가 있기 때문에 `merge voucher`로 가져올 수 있는 데이터 길이가 제한되어있다.
 ``` bash
 root@3197b44a521a:/home/cg_casino/voucher# ls -al
@@ -228,7 +228,7 @@ void on_unload() {
 -rwxr-xr-x 1 user user   10160 Aug  1 14:40 mylib_from2204.so
 ```
 
-### Stack Leak
+### Stack leak
 앞서 확인한대로 `lotto_4011A7()`에서 `%u` 형식이 아닌 데이터를 입력하면 `guess[i]`의 데이터를 출력할 수 있다.
 
 `guess`는 6개의 integer 배열이므로 총 `0x18` 길이의 메모리를 확인할 수 있고 초기화되지 않은 상태에서의 `guess` 값을 확인해보면,
@@ -255,7 +255,7 @@ gef➤  x/3gx $rsp+0x30
     log.info(f"buf : {hex(buf)}")
 ```
 
-### Envp Overwrite
+### Envp overwrite
 이제 쉘을 실행해주는 libc 파일을 `/home/cg_casino/voucher`에 안착시켰으니, 이걸 실행만 시키면 된다.
 
 일반적으로 원하는 libc를 로드하는 테크닉으로 `LD_PRELOAD` 환경변수를 이용하는 방식이 있어서 어떻게 활용할지 고민했다.

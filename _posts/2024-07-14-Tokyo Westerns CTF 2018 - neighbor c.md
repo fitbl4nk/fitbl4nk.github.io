@@ -1,5 +1,5 @@
 ---
-title: Tokyo Westerns 2018 - Neighbor C
+title: Tokyo Westerns CTF 2018 - Neighbor C
 date: 2024-07-14 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, double staged fsb]

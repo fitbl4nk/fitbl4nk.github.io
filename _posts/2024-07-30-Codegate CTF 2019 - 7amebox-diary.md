@@ -1,12 +1,12 @@
 ---
-title: Codegate 2019 - 7amebox-diary
+title: Codegate CTF 2019 - 7amebox-diary
 date: 2024-07-30 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, vm, bof, rop]
 ---
 
 ## 0x00. Introduction
-역시 기본적인 구조는 [7amebox-name](../Codegate-2019-Quals-7amebox-name/)과 동일하다.
+역시 기본적인 구조는 [7amebox-name](../Codegate-CTF-2019-Quals-7amebox-name/)과 동일하다.
 ``` bash
 ➜  ls -al
 total 64

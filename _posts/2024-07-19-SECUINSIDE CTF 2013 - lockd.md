@@ -1,5 +1,5 @@
 ---
-title: SECUINSIDE 2013 - lockd
+title: SECUINSIDE CTF 2013 - lockd
 date: 2024-07-19 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, fsb]

@@ -1,5 +1,5 @@
 ---
-title: Tokyo Westerns 2018 - load
+title: Tokyo Westerns CTF 2018 - load
 date: 2024-07-10 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, file descriptor, /dev/tty]
