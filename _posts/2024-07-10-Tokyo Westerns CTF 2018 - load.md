@@ -47,7 +47,7 @@ int __fastcall load_file_4008FD(void *buf, const char *file_name, __off_t offset
 
 ## 0x02. Exploit
 
-BOF 취약점이 있으니 libc leak을 하려고 했는데 plt가 있는 `puts()`든 `_printf_chk()`든 이상하게 출력이 안됐다.
+BOF 취약점이 있으니 libc leak을 하려고 했는데 PLT가 있는 `puts()`든 `_printf_chk()`든 이상하게 출력이 안됐다.
 
 그래서 디버깅을 해보니 `puts()`의 리턴 값이 `-1`인 것을 확인했고, 뭔가 에러가 발생했음을 알았다.
 
