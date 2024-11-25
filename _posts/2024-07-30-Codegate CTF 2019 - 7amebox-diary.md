@@ -3,6 +3,7 @@ title: Codegate CTF 2019 - 7amebox-diary
 date: 2024-07-30 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, vm, bof, rop]
+render_with_liquid: false
 ---
 
 ## 0x00. Introduction

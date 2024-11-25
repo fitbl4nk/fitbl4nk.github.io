@@ -3,6 +3,7 @@ title: Codegate CTF 2018 Qual - BaskinRobins31
 date: 2024-07-09 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, bof, rop]
+render_with_liquid: false
 ---
 ## 0x00. Introduction
 

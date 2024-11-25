@@ -3,6 +3,7 @@ title: Codegate CTF 2024 Quals - ghost_restaurant (without shadow stack)
 date: 2024-08-28 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, race condition, tls]
+render_with_liquid: false
 ---
 
 ## 0x00. Introduction

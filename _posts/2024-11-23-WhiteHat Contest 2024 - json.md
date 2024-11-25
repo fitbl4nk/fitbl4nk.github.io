@@ -2,7 +2,8 @@
 title: WhiteHat Contest 2024 - json
 date: 2024-11-23 00:00:00 +0900
 categories: [Pwnable, CTF]
-tags: [pwnable, ctf, ]
+tags: [pwnable, ctf, injection, rop]
+render_with_liquid: false
 ---
 
 ## 0x00. Introduction

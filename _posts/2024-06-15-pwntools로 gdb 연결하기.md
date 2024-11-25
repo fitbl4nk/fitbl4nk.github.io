@@ -3,6 +3,7 @@ title: pwntools로 gdb 연결하기
 date: 2024-06-15 00:00:00 +0900
 categories: [Pwnable, Tools]
 tags: [pwnable, pwntools, gdb]
+render_with_liquid: false
 ---
 
 ## 0x00 Introduction

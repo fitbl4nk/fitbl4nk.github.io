@@ -3,6 +3,7 @@ title: Tokyo Westerns CTF 2018 - swap returns
 date: 2024-07-12 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, fsb, got overwrite]
+render_with_liquid: false
 ---
 ## 0x00. Introduction
 

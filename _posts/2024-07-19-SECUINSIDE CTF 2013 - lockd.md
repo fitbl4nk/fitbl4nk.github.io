@@ -3,6 +3,7 @@ title: SECUINSIDE CTF 2013 - lockd
 date: 2024-07-19 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, fsb]
+render_with_liquid: false
 ---
 
 ## 0x00. Introduction

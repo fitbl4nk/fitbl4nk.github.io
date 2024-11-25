@@ -3,6 +3,7 @@ title: Codegate 2019 CTF Quals - cg_casino
 date: 2024-08-01 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, bof, /proc/self/environ, ld_preload, envp]
+render_with_liquid: false
 ---
 
 ## 0x00. Introduction

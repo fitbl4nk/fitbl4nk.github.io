@@ -3,6 +3,7 @@ title: CyberSpace CTF 2024 - ez-rop
 date: 2024-09-15 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, fake stack, rop]
+render_with_liquid: false
 ---
 
 ## 0x00. Introduction

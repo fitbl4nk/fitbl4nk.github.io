@@ -3,6 +3,7 @@ title: CyberSpace CTF 2024 - shop
 date: 2024-10-09 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, fastbin reverse into tcache, unsorted bin, fsop, stdout]
+render_with_liquid: false
 ---
 
 ## 0x00. Introduction

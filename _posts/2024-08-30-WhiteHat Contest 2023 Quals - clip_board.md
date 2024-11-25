@@ -3,6 +3,7 @@ title: WhiteHat Contest 2023 Quals - clip_board
 date: 2024-08-30 00:00:00 +0900
 categories: [Pwnable, CTF]
 tags: [pwnable, ctf, fsop, tcache unlinking, safe linking]
+render_with_liquid: false
 ---
 
 ## 0x00. Introduction
