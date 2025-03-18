@@ -1,8 +1,8 @@
 ---
 title: WhiteHat Contest 2024 Quals - gf
 date: 2024-11-19 00:00:00 +0900
-categories: [Pwnable, CTF]
-tags: [pwnable, ctf, rop, partial overwrite, one gadget, brute force]
+categories: [CTF, Pwnable]
+tags: [ctf, pwnable, rop, partial overwrite, one gadget, brute force]
 ---
 
 ## 0x00. Introduction

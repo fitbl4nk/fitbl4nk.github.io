@@ -1,8 +1,8 @@
 ---
 title: Codegate CTF 2019 - 7amebox-tiny_adventure
 date: 2024-07-29 00:00:00 +0900
-categories: [Pwnable, CTF]
-tags: [pwnable, ctf, vm, out of bound]
+categories: [CTF, Pwnable]
+tags: [ctf, pwnable, vm, out of bound]
 render_with_liquid: false
 ---
 

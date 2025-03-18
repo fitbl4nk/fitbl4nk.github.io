@@ -1,8 +1,8 @@
 ---
 title: Codegate CTF 2019 Quals - 7amebox-name
 date: 2024-07-25 00:00:00 +0900
-categories: [Pwnable, CTF]
-tags: [pwnable, ctf, vm, bof, rop]
+categories: [CTF, Pwnable]
+tags: [ctf, pwnable, vm, bof, rop]
 render_with_liquid: false
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Kalmar CTF 2025 - RWX series
 date: 2025-03-13 00:00:00 +0900
-categories: [Misc, CTF]
-tags: [misc, ctf, linux, gpg, race condition]
+categories: [CTF, Misc]
+tags: [ctf, misc, linux, gpg, race condition]
 render_with_liquid: false
 ---
 

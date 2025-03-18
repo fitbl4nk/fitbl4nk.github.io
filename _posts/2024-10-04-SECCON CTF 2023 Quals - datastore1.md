@@ -1,8 +1,8 @@
 ---
 title: SECCON CTF 2023 Quals - datastore1
 date: 2024-10-04 00:00:00 +0900
-categories: [Pwnable, CTF]
-tags: [pwnable, ctf, out of bound, heap overflow, unsorted bin]
+categories: [CTF, Pwnable]
+tags: [ctf, pwnable, out of bound, heap overflow, unsorted bin]
 render_with_liquid: false
 ---
 
