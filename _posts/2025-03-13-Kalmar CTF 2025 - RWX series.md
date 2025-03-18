@@ -32,7 +32,7 @@ USER user
 CMD ["python3", "app.py"]
 ```
 
-`Dockerfile`을 보면 `would.c`를 빌드해서 / 디렉토리 밑에 `would` 바이너리를 생성한다.
+`Dockerfile`을 보면 `would.c`를 빌드해서 `/` 디렉토리 밑에 `would` 바이너리를 생성한다.
 
 flask로 구동되는 웹 서버를 올리는데 이를 이용해서 flag를 획득해야 한다.
 
@@ -188,7 +188,7 @@ Exploit 시나리오를 위해 잠시 pgp에 대한 background를 설명하자�
 
 따라서 다음과 같은 내용을 `/home/user/.gnupg/gpg.conf`라는 파일에 저장한다.
 
-``` txt
+``` conf
 list-options show-photos
 photo-viewer /would you be so kind to provide me with a flag > /tmp/x 
 list-keys
@@ -292,7 +292,7 @@ Exploit 시나리오는 다음과 같다.
 |write process 생성||
 ||exec process 생성|
 |write "/would you ..." to `STDIN` of `sh`||
-||execute `w\|sh`|
+||execute `w|sh`|
 
 `w|sh` 명령을 실행하는 이유는 길이가 4바이트까지이고 `sh` 프로세스에 `STDIN`을 줘야하기 때문에 한 바이트짜리 명령어인 `w`를 사용하는 것이다.
 
