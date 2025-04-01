@@ -1,83 +1,116 @@
-<!-- markdownlint-disable-next-line -->
-<div align="center">
+<p align="center">
+    <a href="https://www.getzola.org/">
+        <img src="https://img.shields.io/badge/powered_by-Zola-brightgreen?style=flat-square&labelColor=202b2d&color=087e96" alt="Built with Zola"></a>
+    <a href="https://github.com/welpo/tabi">
+        <img src="https://img.shields.io/badge/theme-tabi-0?style=flat-square&labelColor=202b2d&color=087e96" alt="tabi theme"></a>
+    <a href="https://welpo.github.io/tabi/blog/mastering-tabi-settings/">
+        <img src="https://img.shields.io/badge/docs-here-0?style=flat-square&labelColor=202b2d&color=087e96" alt="Documentation"></a>
+</p>
 
-  <!-- markdownlint-disable-next-line -->
-  # Chirpy Jekyll Theme
+# tabi start
 
-  A minimal, responsive, and feature-rich Jekyll theme for technical writing.
+Start blogging in minutes with [Zola](https://www.getzola.org/) and [tabi](https://github.com/welpo/tabi).
 
-  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)][gem]&nbsp;
-  [![CI](https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml/badge.svg?branch=master&event=push)][ci]&nbsp;
-  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4e556876a3c54d5e8f2d2857c4f43894)][codacy]&nbsp;
-  [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)][license]&nbsp;
-  [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
+![Screenshot of tabi theme](https://cdn.jsdelivr.net/gh/welpo/tabi@main/light_dark_screenshot.png)
 
-  [**Live Demo** →][demo]
+## Quick start
 
-  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
+1. On the top right of this page, click "Use this template" → "Create a new repository"
+2. Replace placeholders in `content/_index.md` and in the first four lines of `config.toml`
+3. Save your profile photo to `static/img/profile.webp` (or change the path to your image in `content/_index.md`)
+4. Start writing in `content/blog/`. See `content/blog/hello.md` for an example
 
-</div>
+**Note**: an error like `Tried to build search index for language ko which is not supported`, means Zola does not support search for that language. To disable search, set `build_search_index = false` in `config.toml`
 
-## Features
+> [!TIP]
+> Take a look through `config.toml` to customise further (set up [social links](https://welpo.github.io/tabi/blog/mastering-tabi-settings/#social-media-icons), your [email](https://welpo.github.io/tabi/blog/mastering-tabi-settings/#encoded-email)…). The [Mastering tabi Settings](https://welpo.github.io/tabi/blog/mastering-tabi-settings/) guide has more details.
 
-- Dark Theme
-- Localized UI language
-- Pinned Posts on Home Page
-- Hierarchical Categories
-- Trending Tags
-- Table of Contents
-- Last Modified Date
-- Syntax Highlighting
-- Mathematical Expressions
-- Mermaid Diagrams & Flowcharts
-- Dark Mode Images
-- Embed Media
-- Comment Systems
-- Built-in Search
-- Atom Feeds
-- PWA
-- Web Analytics
-- SEO & Performance Optimization
+## File structure
 
-## Documentation
+```tree
+├── config.toml              # Site configuration
+├── content/
+│   ├── _index.md            # Home page
+│   ├── archive/             # Archive page
+│   │   └── _index.md        # Archive page section
+│   ├── blog/                # Blog posts
+│   │   ├── hello.md         # Sample post
+│   │   └── _index.md        # Blog section configuration
+│   └── projects/            # Projects page
+│       ├── cool_project.md  # Sample project
+│       └── _index.md        # Projects section configuration
+│── static/
+│   └── img/
+│       └── profile.webp     # Profile photo for home page
+└── themes/
+    └── tabi/                # tabi theme
+```
 
-To learn how to use, develop, and upgrade the project, please refer to the [Wiki][wiki].
+## Local development
 
-## Contributing
+1. [Install Zola](https://www.getzola.org/documentation/getting-started/installation/)
+2. Clone your repository
+3. Run `git submodule update --init --recursive`
+4. Run `zola serve`
+5. Visit http://127.0.0.1:1111. You should see [this](https://tabi-start.pages.dev/).
 
-Contributions (_pull requests_, _issues_, and _discussions_) are what make the open-source community such an amazing place
-to learn, inspire, and create. Any contributions you make are greatly appreciated.
-For details, see the "[Contributing Guidelines][contribute-guide]".
+## Deployment
 
-## Credits
+Refer to the [Zola documentation](https://www.getzola.org/documentation/deployment/overview/):
 
-### Contributors
+- [AWS S3 Bucket](https://www.getzola.org/documentation/deployment/aws-s3/)
+- [Cloudflare Pages](https://www.getzola.org/documentation/deployment/cloudflare-pages/)
+- [Codeberg Pages](https://www.getzola.org/documentation/deployment/codeberg-pages/)
+- [Docker image](https://www.getzola.org/documentation/deployment/docker-image/)
+- [Edgio](https://www.getzola.org/documentation/deployment/edgio/)
+- [Fly.io](https://www.getzola.org/documentation/deployment/flyio/)
+- [GitHub Pages](https://www.getzola.org/documentation/deployment/github-pages/)
+- [GitLab Pages](https://www.getzola.org/documentation/deployment/gitlab-pages/)
+- [Netlify](https://www.getzola.org/documentation/deployment/netlify/)
+- [Sourcehut Pages](https://www.getzola.org/documentation/deployment/sourcehut/)
+- [Vercel](https://www.getzola.org/documentation/deployment/vercel/)
+- [Zeabur](https://www.getzola.org/documentation/deployment/zeabur/)
 
-Thanks to [all the contributors][contributors] involved in the development of the project!
+## Updating tabi
 
-[![all-contributors](https://contrib.rocks/image?repo=cotes2020/jekyll-theme-chirpy&columns=16)][contributors]
-<sub> — Made with [contrib.rocks](https://contrib.rocks)</sub>
+### Automated updates
 
-### Third-Party Assets
+This template includes a [GitHub Action workflow](https://github.com/welpo/tabi-start/blob/main/.github/workflows/update-tabi.yml) that checks for tabi theme updates weekly and creates a PR when updates are available.
 
-This project is built on the [Jekyll][jekyllrb] ecosystem and some [great libraries][lib], and is developed using [VS Code][vscode] as well as tools provided by [JetBrains][jetbrains] under a non-commercial open-source software license.
+#### Setting up permissions
 
-The avatar and favicon for the project's website are from [ClipartMAX][clipartmax].
+The automated updates require proper GitHub Actions permissions:
 
-## License
+1. Go to your repository's Settings → Actions → General
+2. Scroll down to "Workflow permissions"
+3. Enable "Allow GitHub Actions to create and approve pull requests"
+4. Save changes
 
-This project is published under [MIT License][license].
+<details>
+<summary>How automated updates work (click to read)</summary>
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[ci]: https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml?query=event%3Apush+branch%3Amaster
-[codacy]: https://app.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
-[license]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE
-[jekyllrb]: https://jekyllrb.com/
-[clipartmax]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
-[demo]: https://cotes2020.github.io/chirpy-demo/
-[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
-[contribute-guide]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md
-[contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
-[lib]: https://github.com/cotes2020/chirpy-static-assets
-[vscode]: https://code.visualstudio.com/
-[jetbrains]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
+- Every Monday at midnight (UTC), the workflow checks for new tabi versions
+- If an update is found, it creates a PR with:
+  - Detailed changelog
+  - Links to relevant commits and PRs
+  - The exact changes being made
+- It runs the Test build workflow. If the build fails, you'll receive an email notification. **Verify the site works locally before merging the PR**
+- You can review and merge these updates at your convenience
+
+</details>
+
+### Manual updates
+
+```bash
+git submodule update --remote themes/tabi
+```
+
+## Support
+
+- [tabi documentation](https://welpo.github.io/tabi/)
+- [Zola documentation](https://www.getzola.org/documentation/getting-started/overview/)
+
+> [!TIP]
+> How was your experience with this template?
+>
+> Share your thoughts in this [tabi discussion](https://github.com/welpo/tabi/discussions/440) or [report any issues](https://github.com/welpo/tabi/issues/new?&labels=bug&template=2_bug_report.yml) you find! Thank you 🙇🏼‍♂️
